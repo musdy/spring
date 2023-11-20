@@ -31,6 +31,7 @@
       if(img){
         imgArr.push(img);
         imgSrc = img.getAttribute("src");
+        console.log(imgSrc);
         img.setAttribute("data-lazyload", imgSrc);
         img.removeAttribute("src");
         img.setAttribute("loading", "lazy");
