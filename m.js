@@ -32,9 +32,11 @@
         imgArr.push(img);
         imgSrc = img.getAttribute("src");
         console.log(imgSrc);
-        img.setAttribute("data-lazyload", imgSrc);
-        img.removeAttribute("src");
-        img.setAttribute("loading", "lazy");
+        if(!imgSrc.includes('data:image') {
+          img.setAttribute("data-lazyload", imgSrc);
+          img.removeAttribute("src");
+          img.setAttribute("loading", "lazy");
+        }
       }
       if(video){
         video.setAttribute('preload', 'none');
@@ -47,7 +49,9 @@
         // do whatever
         if (isInViewport(img)) {
           console.log('In viewport!');
-          img.setAttribute("src", img.getAttribute("data-lazyload"));
+          if(img.getAttribute("data-lazyload").length > 0){
+            img.setAttribute("src", img.getAttribute("data-lazyload"));
+          }
         } else {
           console.log('Nope...');
         }
