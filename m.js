@@ -20,35 +20,37 @@
       }
   });
 
-  let img,video = false;
-  let imgArr = [];
-  document.querySelectorAll(querySelectorStr).forEach(function (item) {
-    img = false;
-    video = false;
-    img = item.shadowRoot.querySelector('img');
-    video = item.shadowRoot.querySelector('video');
-    if(img){
-      imgArr.push(img);
-      imgSrc = img.getAttribute("src");
-      img.setAttribute("data-lazyload", imgSrc);
-      img.removeAttribute("src");
-      img.setAttribute("loading", "lazy");
-    }
-    if(video){
-      video.setAttribute('preload', 'none');
-    }
-  });
-console.log(imgArr);
-
-window.addEventListener('scroll', function (event) {
-  imgArr.forEach.call(imgArr, function(img) {
-    // do whatever
-    if (isInViewport(img)) {
-      console.log('In viewport!');
-      img.setAttribute("src", img.getAttribute("data-lazyload"));
-    } else {
-      console.log('Nope...');
-    }
-  });
-}, false);
+  setTimeout(function(){
+    let img,video = false;
+    let imgArr = [];
+    document.querySelectorAll(querySelectorStr).forEach(function (item) {
+      img = false;
+      video = false;
+      img = item.shadowRoot.querySelector('img');
+      video = item.shadowRoot.querySelector('video');
+      if(img){
+        imgArr.push(img);
+        imgSrc = img.getAttribute("src");
+        img.setAttribute("data-lazyload", imgSrc);
+        img.removeAttribute("src");
+        img.setAttribute("loading", "lazy");
+      }
+      if(video){
+        video.setAttribute('preload', 'none');
+      }
+    });
+    console.log(imgArr);
+    
+    window.addEventListener('scroll', function (event) {
+      imgArr.forEach.call(imgArr, function(img) {
+        // do whatever
+        if (isInViewport(img)) {
+          console.log('In viewport!');
+          img.setAttribute("src", img.getAttribute("data-lazyload"));
+        } else {
+          console.log('Nope...');
+        }
+      });
+    }, false);
+  }, 1000);
 //}
