@@ -22,7 +22,8 @@
       img.setAttribute("data-lazyload", imgSrc);
       img.setAttribute("src", "");
       img.setAttribute("loading", "lazy");
-    } else if(video){
+    }
+    if(video){
       video.setAttribute('preload', 'none');
     }
   });
