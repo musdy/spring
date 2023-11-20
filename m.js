@@ -1,4 +1,4 @@
-if(window.location.pathname.includes('/work')){
+// if(window.location.pathname.includes('/work')){
   let querySelectorStr = '';
   document.querySelectorAll('.page:not(.pinned)').forEach(function(outerEl){
       if(outerEl.querySelector('media-item')){
@@ -22,4 +22,4 @@ if(window.location.pathname.includes('/work')){
       img.setAttribute("loading", "lazy");
     }
   });
-}
+//}
