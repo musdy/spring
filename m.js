@@ -11,15 +11,19 @@
 
   console.log(querySelectorStr);
 
-  let img = false;
+  let img,video = false;
   document.querySelectorAll(querySelectorStr).forEach(function (item) {
     img = false;
+    video = false;
     img = item.shadowRoot.querySelector('img');
+    video = item.shadowRoot.querySelector('video');
     if(img){
       imgSrc = img.getAttribute("src");
       img.setAttribute("data-lazyload", imgSrc);
       img.setAttribute("src", "");
       img.setAttribute("loading", "lazy");
+    } else if(video){
+      video.setAttribute('preload', 'none');
     }
   });
 //}
