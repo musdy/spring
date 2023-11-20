@@ -20,7 +20,7 @@
     if(img){
       imgSrc = img.getAttribute("src");
       img.setAttribute("data-lazyload", imgSrc);
-      img.setAttribute("src", "");
+      img.removeAttribute("src");
       img.setAttribute("loading", "lazy");
     }
     if(video){
