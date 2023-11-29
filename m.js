@@ -89,7 +89,7 @@ setTimeout(function(){
       imgArr.push(img);
       imgSrc = img.getAttribute("src");
       console.log(imgSrc);
-      if(!imgSrc.includes('data:image') {
+      if(!imgSrc.includes('data:image')) {
         img.setAttribute("data-lazyload", imgSrc);
         img.removeAttribute("src");
         img.setAttribute("loading", "lazy");
