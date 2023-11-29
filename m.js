@@ -37,6 +37,7 @@ function gtmCallback(){
  // mailchimp submission
  var mc1Submitted = false;
  var signUpForm = document.getElementById('mc-embedded-subscribe-form');
+console.log(signUpForm);
  signUpForm.addEventListener('reset', function (event) {
    var signUpForm2 = document.getElementById('mc-embedded-subscribe-form');
     signUpForm2.style.display = "none";
