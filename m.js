@@ -106,7 +106,7 @@ setTimeout(function(){
       // do whatever
       if (isInViewport(img)) {
         console.log('In viewport!');
-        if(img.getAttribute("data-lazyload").length > 0){
+        if(img.getAttribute("data-lazyload") && img.getAttribute("data-lazyload").length > 0){
           img.setAttribute("src", img.getAttribute("data-lazyload"));
         }
       } else {
