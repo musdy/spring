@@ -1,9 +1,8 @@
 // gtm
-(function() {
-  var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-  po.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLVERCM19H&onload=gtmCallback';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-})();
+var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+po.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLVERCM19H&onload=gtmCallback';
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+
 function gtag(){dataLayer.push(arguments);} 
 function gtmCallback(){
     window.dataLayer = window.dataLayer || [];
@@ -13,7 +12,7 @@ function gtmCallback(){
 
 
 // cookiebot
- (function() {
+ 
     var po2 = document.createElement('script'); 
       po2.id ='Cookiebot';
       po2.setAttribute("data-cbid", "5e50f5d9-e53b-4ec2-85ad-3b87f36513e3");
@@ -22,17 +21,14 @@ function gtmCallback(){
     po2.src = 'https://consent.cookiebot.com/uc.js';
     var s2 = document.getElementsByTagName('script')[0];
     s2.parentNode.insertBefore(po2, s2);
- })();
 
  // mailchimp script
-  (function() {
     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
     po.src = '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-  })();
   
  // mailchimp
-(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[4]='FIRST_NAME';ftypes[4]='text';fnames[2]='LAST_NAME';ftypes[2]='text';fnames[3]='REPORT';ftypes[3]='text';fnames[5]='JOB_LEVEL';ftypes[5]='text';fnames[7]='COUNTRY';ftypes[7]='text';fnames[8]='INTERESTED';ftypes[8]='text';}());
+  window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[4]='FIRST_NAME';ftypes[4]='text';fnames[2]='LAST_NAME';ftypes[2]='text';fnames[3]='REPORT';ftypes[3]='text';fnames[5]='JOB_LEVEL';ftypes[5]='text';fnames[7]='COUNTRY';ftypes[7]='text';fnames[8]='INTERESTED';ftypes[8]='text';
   
  // mailchimp submission
  var mc1Submitted = false;
