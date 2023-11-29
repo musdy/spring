@@ -10,10 +10,8 @@ function gtmCallback(){
     gtag('config', 'G-DLVERCM19H');
 }
 
-
 // cookiebot
- 
-    var po2 = document.createElement('script'); 
+   var po2 = document.createElement('script'); 
       po2.id ='Cookiebot';
       po2.setAttribute("data-cbid", "5e50f5d9-e53b-4ec2-85ad-3b87f36513e3");
       po2.type = 'text/javascript'; 
@@ -34,28 +32,16 @@ function gtmCallback(){
  var mc1Submitted = false;
  var signUpForm = document.getElementById('mc-embedded-subscribe-form');
 console.log(signUpForm);
- signUpForm.addEventListener('reset', function (event) {
+ 
+
+function listenersAdd(){
+    signUpForm.addEventListener('reset', function (event) {
    var signUpForm2 = document.getElementById('mc-embedded-subscribe-form');
     signUpForm2.style.display = "none";
     var signUpForm = document.getElementById('mce-success-response');
     document.getElementById('mc_embed_signup').append(signUpForm)
   });
-
-// scroll event
-//  window.addEventListener('scroll', () => {
-//   	handleScrollAnimation();
-//   });
-  
-// function handleScrollAnimation(){
-//  	var scrollAmount = document.scrollingElement.scrollTop;
-  
-//   if(scrollAmount > 10){
-// 	document.querySelector('[id="C2057777510"] .page-content').classList.add('scrolled');
-//   } else {
-//     document.querySelector('[id="C2057777510"] .page-content').classList.remove('scrolled');
-//   }
-// }
-
+}
 
 var isInViewport = function (elem) {
   var distance = elem.getBoundingClientRect();
@@ -77,41 +63,53 @@ document.querySelectorAll('.page:not(.pinned)').forEach(function(outerEl){
     }
 });
 
-setTimeout(function(){
-  let img,video = false;
-  let imgArr = [];
-  document.querySelectorAll(querySelectorStr).forEach(function (item) {
-    img = false;
-    video = false;
-    img = item.shadowRoot.querySelector('img');
-    video = item.shadowRoot.querySelector('video');
-    if(img){
-      imgArr.push(img);
-      imgSrc = img.getAttribute("src");
-      console.log(imgSrc);
-      if(!imgSrc.includes('data:image')) {
-        img.setAttribute("data-lazyload", imgSrc);
-        img.removeAttribute("src");
-        img.setAttribute("loading", "lazy");
-      }
-    }
-    if(video){
-      video.setAttribute('preload', 'none');
-    }
-  });
-  console.log(imgArr);
-  
-  window.addEventListener('scroll', function (event) {
-    imgArr.forEach.call(imgArr, function(img) {
-      // do whatever
-      if (isInViewport(img)) {
-        console.log('In viewport!');
-        if(img.getAttribute("data-lazyload") && img.getAttribute("data-lazyload").length > 0){
-          img.setAttribute("src", img.getAttribute("data-lazyload"));
+function lazyloadThese(){
+    setTimeout(function(){
+    let img,video = false;
+      let imgArr = [];
+      document.querySelectorAll(querySelectorStr).forEach(function (item) {
+        img = false;
+        video = false;
+        img = item.shadowRoot.querySelector('img');
+        video = item.shadowRoot.querySelector('video');
+        if(img){
+          imgArr.push(img);
+          imgSrc = img.getAttribute("src");
+          console.log(imgSrc);
+          if(!imgSrc.includes('data:image')) {
+            img.setAttribute("data-lazyload", imgSrc);
+            img.removeAttribute("src");
+            img.setAttribute("loading", "lazy");
+          }
         }
-      } else {
-        console.log('Nope...');
-      }
-    });
-  }, false);
-}, 2500);
+        if(video){
+          video.setAttribute('preload', 'none');
+        }
+      });
+      console.log(imgArr);
+      
+      window.addEventListener('scroll', function (event) {
+        imgArr.forEach.call(imgArr, function(img) {
+          // do whatever
+          if (isInViewport(img)) {
+            console.log('In viewport!');
+            if(img.getAttribute("data-lazyload") && img.getAttribute("data-lazyload").length > 0){
+              img.setAttribute("src", img.getAttribute("data-lazyload"));
+            }
+          } else {
+            console.log('Nope...');
+          }
+        });
+      }, false);
+    }, 2500);
+}
+
+// first load
+lazyloadThese();
+
+window.addEventListener('locationchange', function () {
+    console.log('location changed!');
+    gtmCallback();
+    listenersAdd();
+    lazyloadThese();
+});
