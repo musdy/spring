@@ -215,10 +215,10 @@ function culturePage() {
           // aHrefArray
           allAs.forEach(function (outerEl3) {
             console.log(outerEl3.getAttribute('href'));
-            console.log(outerEl4.textContent);
+            console.log(outerEl3.textContent);
 
-            if(outerEl4.textContent.toUpperCase().indexOf('DOWNLOAD') !== -1){
-              console.log('here',outerEl4);
+            if(outerEl3.textContent.toUpperCase().indexOf('DOWNLOAD') !== -1){
+              console.log('here',outerEl3);
             }
             
           });
