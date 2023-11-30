@@ -221,7 +221,7 @@ function culturePage() {
       });
 
       console.log('here');
-      aHrefArray.forEach(element => element.addEventListener("click", function () {
+      aHrefArray.forEach(element => element.addEventListener("click", function (e) {
             e.preventDefault();
           document.getElementById('D0470220286').style.display = 'flex';
           return false;
