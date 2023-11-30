@@ -1,4 +1,13 @@
-let currentUrl = window.location.href;
+window.currentUrl = window.location.href;
+
+function gtag() {
+  dataLayer.push(arguments);
+}
+function gtmCallback() {
+  window.dataLayer = window.dataLayer || [];
+  gtag("js", new Date());
+  gtag("config", "G-DLVERCM19H");
+}
 
 function loadScripts() {
   // gtm
@@ -9,15 +18,6 @@ function loadScripts() {
     "https://www.googletagmanager.com/gtag/js?id=G-DLVERCM19H&onload=gtmCallback";
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(po, s);
-
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  function gtmCallback() {
-    window.dataLayer = window.dataLayer || [];
-    gtag("js", new Date());
-    gtag("config", "G-DLVERCM19H");
-  }
 
   // cookiebot
   var po2 = document.createElement("script");
@@ -36,18 +36,18 @@ function loadScripts() {
   po.src = "//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js";
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(po, s);
+}
 
-  var isInViewport = function (elem) {
-    var distance = elem.getBoundingClientRect();
-    return (
-      distance.top >= 0 &&
-      distance.left >= 0 &&
-      distance.bottom <=
-        (window.innerHeight || document.documentElement.clientHeight) &&
-      distance.right <=
-        (window.innerWidth || document.documentElement.clientWidth)
-    );
-  };
+function isInViewport(elem) {
+  var distance = elem.getBoundingClientRect();
+  return (
+    distance.top >= 0 &&
+    distance.left >= 0 &&
+    distance.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    distance.right <=
+      (window.innerWidth || document.documentElement.clientWidth)
+  );
 }
 
 function listenersAdd() {
@@ -82,7 +82,7 @@ function lazyloadThese() {
       if (img) {
         imgArr.push(img);
         imgSrc = img.getAttribute("src");
-        console.log(imgSrc);
+        // console.log(imgSrc);
         if (!imgSrc.includes("data:image")) {
           img.setAttribute("data-lazyload", imgSrc);
           img.removeAttribute("src");
@@ -93,7 +93,7 @@ function lazyloadThese() {
         video.setAttribute("preload", "none");
       }
     });
-    console.log(imgArr);
+    // console.log(imgArr);
 
     window.addEventListener(
       "scroll",
@@ -101,7 +101,7 @@ function lazyloadThese() {
         imgArr.forEach.call(imgArr, function (img) {
           // do whatever
           if (isInViewport(img)) {
-            console.log("In viewport!");
+            // console.log("In viewport!");
             if (
               img.getAttribute("data-lazyload") &&
               img.getAttribute("data-lazyload").length > 0
@@ -109,7 +109,7 @@ function lazyloadThese() {
               img.setAttribute("src", img.getAttribute("data-lazyload"));
             }
           } else {
-            console.log("Nope...");
+            // console.log("Nope...");
           }
         });
       },
@@ -154,7 +154,7 @@ if (typeof window.sprintScriptLoaded == "undefined") {
 }
 
 setInterval(function () {
-  if (window.location.href !== currentUrl) {
+  if (window.location.href !== window.currentUrl) {
     console.log("urlChanged");
     currentUrl = window.location.href;
     gtmCallback();
