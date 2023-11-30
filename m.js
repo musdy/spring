@@ -1,5 +1,5 @@
-if (typeof window.sprintScriptLoaded == 'undefined') {
-    window.sprintScriptLoaded = true;
+// if (typeof window.sprintScriptLoaded == 'undefined') {
+    // window.sprintScriptLoaded = true;
     
     // gtm
     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -110,11 +110,11 @@ if (typeof window.sprintScriptLoaded == 'undefined') {
     // first load
     lazyloadThese();
     
-    window.addEventListener('locationchange', function () {
-        console.log('location changed!');
+    window.addEventListener('popstate', function () {
+        console.log('popstate changed!');
         gtmCallback();
         listenersAdd();
         lazyloadThese();
     });
 
-}
+// }
