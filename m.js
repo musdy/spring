@@ -208,28 +208,28 @@ function culturePage() {
     setTimeout(function() {
       let aHrefArray = [];
       querySelectorDeep('column-set').forEach(function (outerEl) {
-        // console.log(querySelectorDeep('column-unit', outerEl));
         let columnUnits = querySelectorDeep('column-unit', outerEl);
         columnUnits.forEach(function (outerEl2) {
           let allAs = querySelectorDeep('a', outerEl2);
-          // aHrefArray
           allAs.forEach(function (outerEl3) {
-            // console.log(outerEl3.getAttribute('href'));
-            // console.log(outerEl3.textContent);
-
             if(outerEl3.textContent.toUpperCase().indexOf('DOWNLOAD') !== -1){
-              console.log('here',outerEl3);
+              console.log(outerEl3);
               aHrefArray.push(outerEl3);
             }
           });
         });
       });
 
-      aHrefArray.addEventListener('click', function(e) {
-        e.preventDefault();
-        document.getElementById('D0470220286').style.display = 'flex';
-        return false;
-      });
+      console.log('here');
+      setTimeout(function(){
+        console.log('addeventlistener');
+        aHrefArray.addEventListener('click', function(e) {
+          e.preventDefault();
+          document.getElementById('D0470220286').style.display = 'flex';
+          return false;
+        });
+      }, 200);
+      
     }, 600);
 }
 
