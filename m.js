@@ -221,14 +221,11 @@ function culturePage() {
       });
 
       console.log('here');
-      setTimeout(function(){
-        console.log('addeventlistener');
-        aHrefArray.addEventListener('click', function(e) {
-          e.preventDefault();
+      aHrefArray.forEach(element => element.addEventListener("click", function () {
+            e.preventDefault();
           document.getElementById('D0470220286').style.display = 'flex';
           return false;
-        });
-      }, 200);
+      }));
       
     }, 600);
 }
