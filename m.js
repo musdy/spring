@@ -1,5 +1,5 @@
-// if (typeof window.sprintScriptLoaded == 'undefined') {
-    // window.sprintScriptLoaded = true;
+if (typeof window.sprintScriptLoaded == 'undefined') {
+    window.sprintScriptLoaded = true;
     
     // gtm
     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
@@ -35,6 +35,8 @@
      var mc1Submitted = false;
      var signUpForm = document.getElementById('mc-embedded-subscribe-form');
     console.log(signUpForm);
+
+}
      
     
     function listenersAdd(){
