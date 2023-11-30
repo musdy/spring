@@ -2,29 +2,29 @@
 if (typeof window.sprintScriptLoaded == 'undefined') {
     window.sprintScriptLoaded = true;
     let currentUrl = window.location.href;
-    
+
     // gtm
     var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
     po.src = 'https://www.googletagmanager.com/gtag/js?id=G-DLVERCM19H&onload=gtmCallback';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-    
-    function gtag(){dataLayer.push(arguments);} 
+
+    function gtag(){dataLayer.push(arguments);}
     function gtmCallback(){
         window.dataLayer = window.dataLayer || [];
         gtag('js', new Date());
         gtag('config', 'G-DLVERCM19H');
     }
-    
+
     // cookiebot
-       var po2 = document.createElement('script'); 
+       var po2 = document.createElement('script');
           po2.id ='Cookiebot';
           po2.setAttribute("data-cbid", "5e50f5d9-e53b-4ec2-85ad-3b87f36513e3");
-          po2.type = 'text/javascript'; 
+          po2.type = 'text/javascript';
           po2.async = true;
         po2.src = 'https://consent.cookiebot.com/uc.js';
         var s2 = document.getElementsByTagName('script')[0];
         s2.parentNode.insertBefore(po2, s2);
-    
+
      // mailchimp script
         var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
         po.src = '//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js';
@@ -39,8 +39,8 @@ if (typeof window.sprintScriptLoaded == 'undefined') {
     console.log(signUpForm);
 
 }
-     
-    
+
+
     function listenersAdd(){
         signUpForm.addEventListener('reset', function (event) {
        var signUpForm2 = document.getElementById('mc-embedded-subscribe-form');
@@ -49,7 +49,7 @@ if (typeof window.sprintScriptLoaded == 'undefined') {
         document.getElementById('mc_embed_signup').append(signUpForm)
       });
     }
-    
+
     var isInViewport = function (elem) {
       var distance = elem.getBoundingClientRect();
       return (
@@ -59,7 +59,7 @@ if (typeof window.sprintScriptLoaded == 'undefined') {
         distance.right <= (window.innerWidth || document.documentElement.clientWidth)
       );
     };
-    
+
     let querySelectorStr = '';
     document.querySelectorAll('.page:not(.pinned)').forEach(function(outerEl){
         if(outerEl.querySelector('media-item')){
@@ -69,7 +69,7 @@ if (typeof window.sprintScriptLoaded == 'undefined') {
           querySelectorStr += "#" + outerEl.getAttribute('id') + ' media-item';
         }
     });
-    
+
     function lazyloadThese(){
         setTimeout(function(){
         let img,video = false;
@@ -94,7 +94,7 @@ if (typeof window.sprintScriptLoaded == 'undefined') {
             }
           });
           console.log(imgArr);
-          
+
           window.addEventListener('scroll', function (event) {
             imgArr.forEach.call(imgArr, function(img) {
               // do whatever
@@ -110,20 +110,14 @@ if (typeof window.sprintScriptLoaded == 'undefined') {
           }, false);
         }, 2500);
     }
-    
+
     // first load
     lazyloadThese();
-    
-    // window.addEventListener('popstate', function () {
-    //     console.log('popstate changed!');
-    //     gtmCallback();
-    //     listenersAdd();
-    //     lazyloadThese();
-    // });
 
-    setInterval(){
-        if(window.location.href != currentUrl){
-            console.log(urlChanged');
+    setInterval(function () {
+        if(window.location.href !== currentUrl){
+            console.log('urlChanged');
+            currentUrl = window.location.href;
             gtmCallback();
             listenersAdd();
             lazyloadThese();
