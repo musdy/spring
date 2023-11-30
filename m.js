@@ -206,8 +206,7 @@ function studiosFilters() {
 
 function culturePage() {
     setTimeout(function(){
-      console.log(querySelectorDeep('column-set'));
-      console.log(querySelectorDeep('column-set::shadow column-unit::shadow a'));
+      // console.log(querySelectorDeep('column-set'));
       querySelectorDeep('column-set').forEach(function (outerEl) {
         // console.log(outerEl);
         console.log(querySelectorDeep('column-unit', outerEl));
