@@ -206,25 +206,15 @@ function studiosFilters() {
 
 function culturePage() {
     setTimeout(function(){
-        // let querySelectorStr = '';
-        // let mediaEl = false;
-        // document.querySelectorAll(".page:not(.pinned)").forEach(function (outerEl) {
-        //     console.log('set',outerEl.querySelector("column-set"));
-        //     if (outerEl.querySelector("column-set")) {
-        //         let e =  outerEl.querySelector("column-set");
-        //         console.log('show', e);
-        //         console.log('d', e?.shadowRoot.querySelector('a'));
-        //         //let er = outerEl.querySelector("column-set")?.shadowRoot;
-        //         //console.log('er', er?.shadowRoot.querySelector('a'));
-        //         // console.log(outerEl.querySelector("column-set").shadowRoot.querySelectorAll('a'));
-        //     }
-        // });
-
       console.log(querySelectorDeep('column-set'));
       console.log(querySelectorDeep('column-set::shadow column-unit::shadow a'));
       querySelectorDeep('column-set').forEach(function (outerEl) {
         // console.log(outerEl);
         console.log(querySelectorDeep('column-unit', outerEl));
+        let columnUnits = querySelectorDeep('column-unit', outerEl);
+        columnUnits.forEach(function (outerEl2) {
+          console.log(querySelectorDeep('a', outerEl2));
+        });
       });
     }, 600);
 }
