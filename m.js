@@ -223,7 +223,8 @@ function culturePage() {
       console.log(querySelectorDeep('column-set'));
       console.log(querySelectorDeep('column-set::shadow column-unit::shadow a'));
       querySelectorDeep('column-set').forEach(function (outerEl) {
-        console.log(outerEl);
+        // console.log(outerEl);
+        console.log(querySelectorDeep('column-unit', outerEl));
       });
     }, 600);
 }
