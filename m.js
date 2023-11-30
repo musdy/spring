@@ -205,14 +205,17 @@ function studiosFilters() {
 }
 
 function culturePage() {
-    setTimeout(function(){
-      // console.log(querySelectorDeep('column-set'));
+    setTimeout(function() {
+      let aHrefArray = [];
       querySelectorDeep('column-set').forEach(function (outerEl) {
-        // console.log(outerEl);
         console.log(querySelectorDeep('column-unit', outerEl));
         let columnUnits = querySelectorDeep('column-unit', outerEl);
         columnUnits.forEach(function (outerEl2) {
-          console.log(querySelectorDeep('a', outerEl2));
+          let allAs = querySelectorDeep('a', outerEl2);
+          // aHrefArray
+          allAs.forEach(function (outerEl3) {
+            console.log(outerEl3.getAttribute('href'));
+          });
         });
       });
     }, 600);
