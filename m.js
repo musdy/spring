@@ -231,14 +231,17 @@ function culturePage() {
 
 
 
-  document.querySelector('.email-newsletter-close').addEventListener('click', function(e){
-    e.preventDefault();
-    document.getElementById("D0470220286").style.display = "none";
-    return false;
-  });
+  if(document.querySelector('.email-newsletter-close')){
+    document.querySelector('.email-newsletter-close').addEventListener('click', function(e){
+        e.preventDefault();
+        document.getElementById("D0470220286").style.display = "none";
+        return false;
+    });
+    }
 }
 
-function restartPage() {
+function restartPage() { 
+ gtmCallback();
   lazyloadThese();
   mailchimp();
 //   listenersAdd();
