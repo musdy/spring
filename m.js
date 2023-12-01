@@ -1,4 +1,3 @@
-
 function gtag() {
   dataLayer.push(arguments);
 }
@@ -12,7 +11,7 @@ function gtmCallback() {
 // ts-app::shadow paper-textarea::shadow paper-input-container
 function querySelectorDeep(selector, root = document) {
   let currentRoot = root;
-  let partials = selector.split('::shadow');
+  let partials = selector.split("::shadow");
   let elems = currentRoot.querySelectorAll(partials[0]);
   for (let i = 1; i < partials.length; i++) {
     let partial = partials[i];
@@ -21,15 +20,13 @@ function querySelectorDeep(selector, root = document) {
       let shadow = elems[j].shadowRoot;
       if (shadow) {
         const matchesInShadow = shadow.querySelectorAll(partial);
-        elemsInside = elemsInside.concat([... matchesInShadow]);
+        elemsInside = elemsInside.concat([...matchesInShadow]);
       }
     }
     elems = elemsInside;
   }
   return elems;
 }
-
-
 
 function loadScripts() {
   // gtm
@@ -50,7 +47,6 @@ function loadScripts() {
   po2.src = "https://consent.cookiebot.com/uc.js";
   var s2 = document.getElementsByTagName("script")[0];
   s2.parentNode.insertBefore(po2, s2);
-
 }
 
 function isInViewport(elem) {
@@ -66,12 +62,12 @@ function isInViewport(elem) {
 }
 
 function listenersAdd() {
-//   window.signUpForm.addEventListener("reset", function (event) {
-//     var signUpForm2 = document.getElementById("mc-embedded-subscribe-form");
-//     signUpForm2.style.display = "none";
-//     var signUpFormResponse = document.getElementById("mce-success-response");
-//     document.getElementById("mc_embed_signup").append(signUpFormResponse);
-//   });
+  window.signUpForm.addEventListener("reset", function (event) {
+    var signUpForm2 = document.getElementById("mc-embedded-subscribe-form");
+    signUpForm2.style.display = "none";
+    var signUpFormResponse = document.getElementById("mce-success-response");
+    document.getElementById("mc_embed_signup").append(signUpFormResponse);
+  });
 }
 
 let querySelectorStr = "";
@@ -85,9 +81,9 @@ document.querySelectorAll(".page:not(.pinned)").forEach(function (outerEl) {
 });
 
 function lazyloadThese() {
-    if (window.location.pathname != '/work-1') {
-        return false;
-    }
+  if (window.location.pathname != "/work-1") {
+    return false;
+  }
   setTimeout(function () {
     let img,
       video = false;
@@ -137,11 +133,13 @@ function lazyloadThese() {
 }
 
 function mailchimp() {
-    if(document.getElementById("mc-embedded-subscribe-form") == null){
-        return true;
-    }
+  if (document.getElementById("mc-embedded-subscribe-form") == null) {
+    return true;
+  }
 
-    // mailchimp script
+  console.log('callled mailchimp');
+
+  // mailchimp script
   var po = document.createElement("script");
   po.type = "text/javascript";
   po.async = true;
@@ -149,7 +147,7 @@ function mailchimp() {
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(po, s);
 
-    // console.log(document.getElementById("mc-embedded-subscribe-form"));
+  // console.log(document.getElementById("mc-embedded-subscribe-form"));
   // mailchimp
   window.fnames = new Array();
   window.ftypes = new Array();
@@ -171,98 +169,161 @@ function mailchimp() {
   ftypes[8] = "text";
 
   // mailchimp submission
-  window.signUpForm = document.getElementById("mc-embedded-subscribe-form");
-//   console.log(signUpForm);
+  let signUpForm = document.getElementById("mc-embedded-subscribe-form");
+//   let signUpFormOverlay = document.getElementById('mc-embedded-subscribe-form2');
+  //   console.log(signUpForm);
 
-window.signUpForm.addEventListener("reset", function (event) {
+//   signUpFormOverlay.addEventListener("reset", function (event) {
+//     var signUpForm3 = document.getElementById("mc-embedded-subscribe-form2");
+//     signUpForm3.style.display = "none";
+//     var signUpFormResponse4 = document.getElementById("mce-success-response-overlay");
+//     document.getElementById("mc_embed_signup_overlay").append(signUpFormResponse4);
+//   });
+
+  signUpForm.addEventListener("reset", function (event) {
     var signUpForm2 = document.getElementById("mc-embedded-subscribe-form");
     signUpForm2.style.display = "none";
     var signUpFormResponse = document.getElementById("mce-success-response");
     document.getElementById("mc_embed_signup").append(signUpFormResponse);
+
+    console.log(window.onSuccessfulMailchimpSubmitUrl);
+    if(window.onSuccessfulMailchimpSubmitUrl){
+        window.open(window.onSuccessfulMailchimpSubmitUrl, "_blank");
+
+        setTimeout(function() {
+            // document.getElementById('mce-EMAIL').value
+            setCookie('newsletterSubmission','true', 365);
+            window.onSuccessfulMailchimpSubmitUrl = false;
+            document.getElementById("D0470220286").style.display = "none";
+        }, 2000);
+    }
   });
 }
 
-function studiosFilters() {
-    if (!document.location.pathname.includes('studios')) {
-        return false;
-    }
-
-    let bodycopy;
-    document.querySelectorAll("#T3493764319, #K1575982813, #N1067787774").forEach(function (outerEl) {
-        bodycopy = outerEl.querySelector("bodycopy");
-        if (bodycopy) {
-            bodycopy.style.maxHeight = "25px";
-        }
-        outerEl.addEventListener('click', function(e){
-            console.log(e.target.closest('bodycopy'));
-            if(window.getComputedStyle(e.target.closest('bodycopy')).maxHeight == '25px'){
-                e.target.closest('bodycopy').style.maxHeight = "100%";
-            } else {
-                e.target.closest('bodycopy').style.maxHeight = "25px";
-            }
-        });
-    });
-}
-
 function culturePage() {
-    setTimeout(function() {
-      let aHrefArray = [];
-      querySelectorDeep('column-set').forEach(function (outerEl) {
-        let columnUnits = querySelectorDeep('column-unit', outerEl);
-        columnUnits.forEach(function (outerEl2) {
-          let allAs = querySelectorDeep('a', outerEl2);
-          allAs.forEach(function (outerEl3) {
-            if(outerEl3.textContent.toUpperCase().indexOf('DOWNLOAD') !== -1){
-              console.log(outerEl3);
-              aHrefArray.push(outerEl3);
-            }
-          });
+  setTimeout(function () {
+    let aHrefArray = [];
+    querySelectorDeep("column-set").forEach(function (outerEl) {
+      let columnUnits = querySelectorDeep("column-unit", outerEl);
+      columnUnits.forEach(function (outerEl2) {
+        let allAs = querySelectorDeep("a", outerEl2);
+        allAs.forEach(function (outerEl3) {
+          if (outerEl3.textContent.toUpperCase().indexOf("DOWNLOAD") !== -1) {
+            // console.log(outerEl3);
+            aHrefArray.push(outerEl3);
+          }
         });
       });
+    });
 
-      console.log('here');
-      aHrefArray.forEach(element => element.addEventListener("click", function (e) {
+    aHrefArray.forEach((element) =>
+      element.addEventListener("click", function (e) {
+        var x = getCookie('newsletterSubmission');
+        if (!x) {
             e.preventDefault();
-          document.getElementById('D0470220286').style.display = 'flex';
-          return false;
-      }));
-      
-    }, 600);
+            document.getElementById("D0470220286").style.display = "flex";
+            window.onSuccessfulMailchimpSubmitUrl = e.target.getAttribute('href');
+        }
+        return false;
+      })
+    );
+  }, 600);
 
-    document.onkeydown = function(evt) {
-      evt = evt || window.event;
-      var isEscape = false;
-      if ("key" in evt) {
-          isEscape = (evt.key === "Escape" || evt.key === "Esc");
-      } else {
-          isEscape = (evt.keyCode === 27);
-      }
-      if (isEscape) {
-          document.getElementById('D0470220286').style.display = 'none';
-      }
-  };
+
+
+  document.querySelector('.email-newsletter-close').addEventListener('click', function(e){
+    e.preventDefault();
+    document.getElementById("D0470220286").style.display = "none";
+    return false;
+  });
 }
 
-function restartPage(){
-    lazyloadThese();
-    mailchimp();
-    studiosFilters();
-    culturePage();
+function restartPage() {
+  lazyloadThese();
+  mailchimp();
+//   listenersAdd();
+//   studiosFilters();
+  culturePage();
 }
 
 // first load
 if (typeof window.sprintScriptLoaded == "undefined") {
-    window.sprintScriptLoaded = true;
-    window.currentUrl = window.location.href;
-    loadScripts();
-    restartPage();
+  window.sprintScriptLoaded = true;
+  window.currentUrl = window.location.href;
+  loadScripts();
+  restartPage();
 }
 
 setInterval(function () {
   if (window.location.href !== window.currentUrl) {
-    console.log("urlChanged");
     window.currentUrl = window.location.href;
     gtmCallback();
     restartPage();
   }
 }, 1000);
+
+
+
+
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+
+
+
+// function studiosFilters() {
+//   if (!document.location.pathname.includes("studios")) {
+//     return false;
+//   }
+
+//   let bodycopy;
+//   document
+//     .querySelectorAll("#T3493764319, #K1575982813, #N1067787774")
+//     .forEach(function (outerEl) {
+//       bodycopy = outerEl.querySelector("bodycopy");
+//       if (bodycopy) {
+//         bodycopy.style.maxHeight = "25px";
+//       }
+//       outerEl.addEventListener("click", function (e) {
+//         console.log(e.target.closest("bodycopy"));
+//         if (
+//           window.getComputedStyle(e.target.closest("bodycopy")).maxHeight ==
+//           "25px"
+//         ) {
+//           e.target.closest("bodycopy").style.maxHeight = "100%";
+//         } else {
+//           e.target.closest("bodycopy").style.maxHeight = "25px";
+//         }
+//       });
+//     });
+// }
+
+//   document.onkeydown = function (evt) {
+//     evt = evt || window.event;
+//     var isEscape = false;
+//     if ("key" in evt) {
+//       isEscape = evt.key === "Escape" || evt.key === "Esc";
+//     } else {
+//       isEscape = evt.keyCode === 27;
+//     }
+//     if (isEscape) {
+//       document.getElementById("D0470220286").style.display = "none";
+//     }
+//   };
