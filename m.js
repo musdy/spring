@@ -29,6 +29,16 @@ function querySelectorDeep(selector, root = document) {
 }
 
 function loadScripts() {
+
+  // hubspot
+  var po0 = document.createElement("script");
+  po0.type = "text/javascript";
+  po0.async = true;
+  po0.src = "//js-eu1.hs-scripts.com/26857380.js";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(po0, s);
+
+  
   // gtm
   var po = document.createElement("script");
   po.type = "text/javascript";
