@@ -204,8 +204,8 @@ function mailchimp() {
             // document.getElementById('mce-EMAIL').value
             setCookie('newsletterSubmission','true', 365);
             window.onSuccessfulMailchimpSubmitUrl = false;
-            if(document.getElementById("E0025010965")){
-              document.getElementById("E0025010965").style.display = "none";
+            if(document.getElementById("F2419283891")){
+              document.getElementById("F2419283891").style.display = "none";
             }
         }, 2000);
     }
@@ -233,8 +233,8 @@ function culturePage() {
         var x = getCookie('newsletterSubmission');
         if (!x) {
             e.preventDefault();
-            if(document.getElementById("E0025010965")){
-              document.getElementById("E0025010965").style.display = "flex";
+            if(document.getElementById("F2419283891")){
+              document.getElementById("F2419283891").style.display = "flex";
             }
             window.onSuccessfulMailchimpSubmitUrl = e.target.getAttribute('href');
         }
@@ -248,8 +248,8 @@ function culturePage() {
   if(document.querySelector('.email-newsletter-close')){
     document.querySelector('.email-newsletter-close').addEventListener('click', function(e){
         e.preventDefault();
-        if(document.getElementById("E0025010965")){
-          document.getElementById("E0025010965").style.display = "none";
+        if(document.getElementById("F2419283891")){
+          document.getElementById("F2419283891").style.display = "none";
         }
         return false;
     });
@@ -343,6 +343,6 @@ function getCookie(name) {
 //       isEscape = evt.keyCode === 27;
 //     }
 //     if (isEscape) {
-//       document.getElementById("E0025010965").style.display = "none";
+//       document.getElementById("F2419283891").style.display = "none";
 //     }
 //   };
